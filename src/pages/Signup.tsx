@@ -1,6 +1,6 @@
-import React from "react";
-import { useHistory } from "react-router";
-import { useForm, SubmitHandler } from "react-hook-form";
+import React from 'react'
+import { useHistory } from 'react-router'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import {
   FormErrorMessage,
   FormLabel,
@@ -10,34 +10,34 @@ import {
   Flex,
   Box,
   Heading,
-} from "@chakra-ui/core";
+} from '@chakra-ui/core'
 
 type Inputs = {
-  username: string;
-  email: string;
-  password: string;
-};
+  username: string
+  email: string
+  password: string
+}
 
 export default function SignupForm() {
-  const history = useHistory();
+  const history = useHistory()
 
-  const { handleSubmit, errors, register, formState } = useForm();
+  const { handleSubmit, errors, register, formState } = useForm()
 
   const validateName = (value: String) => {
-    let error;
+    let error
     if (!value) {
-      error = "Name is required";
+      error = 'Name is required'
     }
-    return error || true;
-  };
+    return error || true
+  }
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(JSON.stringify(data));
-  };
+    console.log(JSON.stringify(data))
+  }
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh">
-      <Box m={[10, 0, 0, 0]} width={["100%", "75%", "50%", "25%"]}>
+      <Box m={[10, 0, 0, 0]} width={['100%', '75%', '50%', '25%']}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading>Sign Up</Heading>
           <FormControl mt={10} isInvalid={errors.username}>
@@ -99,12 +99,12 @@ export default function SignupForm() {
             variantColor="blue"
             variant="outline"
             isLoading={formState.isSubmitting}
-            onClick={() => history.push("/login")}
+            onClick={() => history.push('/login')}
           >
             Log In
           </Button>
         </form>
       </Box>
     </Flex>
-  );
+  )
 }
