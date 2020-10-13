@@ -1,5 +1,5 @@
-import React from "react";
-import { Box } from "@chakra-ui/core";
+import React from 'react'
+import { Box } from '@chakra-ui/core'
 
 function Home() {
   return (
@@ -12,7 +12,7 @@ function Home() {
     >
       <h1>Home</h1>
     </Box>
-  );
+  )
 }
 
-export default Home;
+export default Home

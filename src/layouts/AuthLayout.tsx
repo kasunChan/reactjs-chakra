@@ -1,7 +1,9 @@
-import React from "react";
-import { Box } from "@chakra-ui/core";
+import React from 'react'
+import { Box } from '@chakra-ui/core'
 
-const Home = (props: any) => {
+type P = {}
+
+const Home: React.FC<P> = (props) => {
   return (
     <Box
       w="100%"
@@ -11,9 +13,9 @@ const Home = (props: any) => {
       justifyContent="center"
       bg="white"
     >
-      { props.children }
+      {props.children}
     </Box>
-  );
+  )
 }
 
-export default Home;
+export default Home

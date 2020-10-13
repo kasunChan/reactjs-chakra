@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect
-} from 'react-router-dom';
-import Login from './Login';
-import Signup from './Signup';
-import Home from './Home';
+  Redirect,
+} from 'react-router-dom'
+import Login from './Login'
+import Signup from './Signup'
+import Home from './Home'
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App
