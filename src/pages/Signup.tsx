@@ -9,7 +9,7 @@ import {
   Button,
   Flex,
   Box,
-  Heading
+  Heading,
 } from "@chakra-ui/core";
 
 type Inputs = {
@@ -29,26 +29,21 @@ export default function SignupForm() {
       error = "Name is required";
     }
     return error || true;
-  }
+  };
 
-  const onSubmit: SubmitHandler<Inputs> = data => {
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
     console.log(JSON.stringify(data));
   };
 
   return (
     <Flex justifyContent="center" alignItems="center" height="100vh">
-      <Box
-        width={[
-          "100%",
-          "75%",
-          "50%",
-          "25%",
-        ]}
-      >
+      <Box m={[10, 0, 0, 0]} width={["100%", "75%", "50%", "25%"]}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Heading>Sign Up</Heading>
           <FormControl mt={10} isInvalid={errors.username}>
-            <FormLabel htmlFor="name" fontWeight="bold">Username</FormLabel>
+            <FormLabel htmlFor="name" fontWeight="bold">
+              Username
+            </FormLabel>
             <Input
               name="username"
               placeholder="username"
@@ -59,7 +54,9 @@ export default function SignupForm() {
             </FormErrorMessage>
           </FormControl>
           <FormControl mt={6} isInvalid={errors.email}>
-            <FormLabel htmlFor="name" fontWeight="bold">Email</FormLabel>
+            <FormLabel htmlFor="name" fontWeight="bold">
+              Email
+            </FormLabel>
             <Input
               name="email"
               type="email"
@@ -71,7 +68,9 @@ export default function SignupForm() {
             </FormErrorMessage>
           </FormControl>
           <FormControl mt={6} isInvalid={errors.password}>
-            <FormLabel htmlFor="password" fontWeight="bold">Password</FormLabel>
+            <FormLabel htmlFor="password" fontWeight="bold">
+              Password
+            </FormLabel>
             <Input
               name="password"
               placeholder="password"
@@ -100,7 +99,7 @@ export default function SignupForm() {
             variantColor="blue"
             variant="outline"
             isLoading={formState.isSubmitting}
-            onClick={() => history.push('/login')}
+            onClick={() => history.push("/login")}
           >
             Log In
           </Button>
