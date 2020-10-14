@@ -12,7 +12,7 @@ import {
   Heading,
 } from '@chakra-ui/core'
 
-type Inputs = {
+export type SignupPayload = {
   username: string
   email: string
   password: string
@@ -31,7 +31,7 @@ export default function SignupForm() {
     return error || true
   }
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<SignupPayload> = (data) => {
     console.log(JSON.stringify(data))
   }
 

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useHistory } from 'react-router'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import {
@@ -15,13 +15,20 @@ import {
 } from '@chakra-ui/core'
 
 import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
+// eslint-disable-next-line import/no-cycle
+import { AppContext } from '../../store'
 
-type Inputs = {
+export type LoginPayload = {
   username: string
   password: string
 }
 
 export default function LoginForm() {
+
+  const {
+    dispatch,
+  } = useContext(AppContext)
+
   const history = useHistory()
   const { colorMode, toggleColorMode } = useColorMode()
 
@@ -35,8 +42,8 @@ export default function LoginForm() {
     return error || true
   }
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(JSON.stringify(data))
+  const onSubmit: SubmitHandler<LoginPayload> = (data) => {
+    dispatch({ type: 'LOGIN', data })
   }
 
   return (

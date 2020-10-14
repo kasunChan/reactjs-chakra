@@ -5,8 +5,8 @@ import {
   Route,
   Redirect,
 } from 'react-router-dom'
-import Login from './Login'
-import Signup from './Signup'
+import Login from './auth/Login'
+import Signup from './auth/Signup'
 import Home from './Home'
 
 function App() {

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider, CSSReset, ColorModeProvider } from '@chakra-ui/core'
+import { AppProvider } from './store'
 import App from './pages/App'
 import * as serviceWorker from './serviceWorker'
 
@@ -9,7 +10,9 @@ ReactDOM.render(
     <ColorModeProvider>
       <ThemeProvider>
         <CSSReset />
-        <App />
+        <AppProvider>
+          <App />
+        </AppProvider>
       </ThemeProvider>
     </ColorModeProvider>
   </React.StrictMode>,
