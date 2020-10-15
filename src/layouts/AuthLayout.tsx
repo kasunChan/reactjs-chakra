@@ -1,36 +1,23 @@
 import React from 'react'
-import { Flex, IconButton, useColorMode } from '@chakra-ui/core'
-import { RiMoonClearLine, RiSunLine } from 'react-icons/ri'
+import { Flex } from '@chakra-ui/core'
+import BaseLayout from './BaseLayout'
 
 type P = {}
 
-const Home: React.FC<P> = (props) => {
-  const { colorMode, toggleColorMode } = useColorMode()
+const AuthLayout: React.FC<P> = (props) => {
 
   return (
-    <Flex flexDirection="column" h="100vh">
-      <Flex justifyContent="center" width="100%" borderBottom="1px" borderBottomColor="gray.400">
-        <Flex height="100px" justifyContent="center" alignItems="center">
-          <p>Either create an account or log in to your existing one.</p>
+    <BaseLayout>
+      <Flex flexDirection="column" h="100vh">
+        <Flex justifyContent="center" width="100%" borderBottom="1px" borderBottomColor="gray.400">
+          <Flex height="100px" justifyContent="center" alignItems="center">
+            <p>Either create an account or log in to your existing one.</p>
+          </Flex>
         </Flex>
-        <IconButton
-          m={3}
-          position="absolute"
-          top={0}
-          right={0}
-          width="20px"
-          variant="ghost"
-          isRound
-          variantColor={colorMode === 'light' ? 'white' : 'green'}
-          onClick={toggleColorMode}
-          aria-label="Call Sage"
-          fontSize="20px"
-          icon={colorMode === 'light' ? RiMoonClearLine : RiSunLine}
-        />
+        {props.children}
       </Flex>
-      {props.children}
-    </Flex>
+    </BaseLayout>
   )
 }
 
-export default Home
+export default AuthLayout
