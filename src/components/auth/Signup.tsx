@@ -1,6 +1,9 @@
 import React from 'react'
 import { useHistory } from 'react-router'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as yup from 'yup'
+
 import {
   FormErrorMessage,
   FormLabel,
@@ -12,26 +15,27 @@ import {
   Heading,
 } from '@chakra-ui/core'
 
-type Inputs = {
+export type SignupPayload = {
   username: string
   email: string
   password: string
 }
 
+const schema = yup.object().shape({
+  username: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().required(),
+})
+
 export default function SignupForm() {
   const history = useHistory()
 
-  const { handleSubmit, errors, register, formState } = useForm()
+  const { handleSubmit, errors, register, formState } = useForm({
+    resolver: yupResolver(schema),
+  })
 
-  const validateName = (value: String) => {
-    let error
-    if (!value) {
-      error = 'Name is required'
-    }
-    return error || true
-  }
-
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<SignupPayload> = (data) => {
+    // signup action here
     console.log(JSON.stringify(data))
   }
 
@@ -47,7 +51,7 @@ export default function SignupForm() {
             <Input
               name="username"
               placeholder="username"
-              ref={register({ validate: validateName })}
+              ref={register}
             />
             <FormErrorMessage>
               {errors.username && errors.username.message}
@@ -61,7 +65,7 @@ export default function SignupForm() {
               name="email"
               type="email"
               placeholder="email"
-              ref={register({ validate: validateName })}
+              ref={register}
             />
             <FormErrorMessage>
               {errors.email && errors.email.message}
@@ -75,7 +79,7 @@ export default function SignupForm() {
               name="password"
               placeholder="password"
               type="password"
-              ref={register({ validate: validateName })}
+              ref={register}
             />
             <FormErrorMessage>
               {errors.password && errors.password.message}
